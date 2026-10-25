@@ -1,0 +1,6 @@
+{
+  "name": "STREAMLY",
+  "description": "High-performance Netflix-style video streaming web application featuring legal Creative Commons and Public Domain cinema, custom 60fps DOM video player, safe WebVTT/SRT subtitle engine, and CORS-bypass stream extraction proxy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,95 @@
+ROLE
+Act as a Senior Full-Stack Engineer (Frontend + Edge/Backend) specializing in high-performance video streaming UIs and extraction architectures. Build "STREAMLY", a Netflix-style streaming web app. Brand name, accent color, and tagline live in `src/config.ts`. Do NOT use the Netflix name, logo, red "N" mark, or any proprietary assets. All content must come from legal sources (section 2).
+
+STACK (strict)
+React 18 + Vite + TypeScript (strict) + Tailwind CSS + React Router + Zustand. No UI component libraries, no animation libraries. System font stack only. Dark theme: background #141414, text #fff / #b3b3b3, accent from a CSS variable. Initial JS under 200 KB gzipped (code-split everything else). Animate only `transform` and `opacity`.
+
+QUALITY BAR
+Zero console errors or warnings, zero memory leaks, zero layout shift, no jank. No TODOs or "implement here" stubs. Write real, complete code for every file.
+
+HONESTY & LICENSE RULES (very important)
+- Do NOT invent or guess any video, subtitle, image, or API URLs. Use only URLs I provide. Where one is missing, put a clearly marked placeholder in `library.json` (e.g., MUST_FILL_URL) and list exactly which entries I must fill in.
+- If unsure about anything, say so instead of guessing.
+- Big Buck Bunny, Sintel, Tears of Steel, and Elephants Dream are Creative Commons Attribution works (Blender Foundation), NOT public domain. Add a `license` and `credit` field per title and a /credits page that displays them. Never describe them as public domain.
+- Never truncate a file or write "rest of code here". If a phase is too long, split it ("Part 1 of N") and continue when I say "continue".
+
+PHASES (stop after each and wait for me to say "next"; start with Phase 1 only)
+Phase 1: setup, config, types, stores, safe storage, utilities, error boundary, lazy routes, vercel.json
+Phase 2: data layer + Navbar + Home (hero, rows, cards, skeletons)
+Phase 3: Details modal, Search, My List, Continue Watching, Credits page
+Phase 4: Player core (video, controls, seek bar, keyboard, touch, resume)
+Phase 5: Subtitles system (pure-function parser, safe rendering)
+Phase 6: HLS.js, Media Session, Wake Lock, TMDB discovery layer, and the Backend CORS-Bypass Proxy API.
+Phase-boundary exception: routes for later phases may render a minimal page labeled "Built in Phase N" until that phase.
+Output format for each phase: list the files created or changed, then the FULL code of those files only, then a "Test now" checklist of 5 items.
+
+=== 1. ARCHITECTURE & STATE ===
+- Zustand stores: `usePrefs` (volume, muted, speed, subtitle style/language/offset defaults, pause-on-tab-hidden) and `useLibrary` (myList, progress map keyed by title id). Persist via a safe storage wrapper (try/catch, in-memory fallback for quota errors or incognito, versioned keys like `streamly:v1:prefs`).
+- Global Error Boundary plus per-route boundaries. Per-row error state with Retry. Offline banner via `online`/`offline` events.
+- React.lazy + Suspense per route. The player route, hls.js and subtitle utilities must NOT be in the initial bundle.
+- Respect `prefers-reduced-motion` and `navigator.connection.saveData` (when on: no trailer autoplay, smaller images, no prefetching).
+
+=== 2. DATA, LEGAL SOURCES & BACKEND PROXY ===
+- `src/data/library.json`: `{ id, type: "movie"|"episode", title, year, overview, poster, backdrop, duration, maturity, genres[], cast[], license, credit, sources: [{ quality: "1080p"|"720p"|"480p", type: "mp4"|"hls", url }], subtitles: [{ lang, label, url }], skipIntro: { start, end } | null, nextEpisodeId | null, seriesMetadata?: { seriesId, season, episode } }`.
+- Pre-fill with 6 titles: the four Blender films plus 2 genuinely public-domain Internet Archive films. Follow the HONESTY RULES for every URL. Subtitle `.vtt` files are bundled in `/public/subs` (same-origin).
+- Optional TMDB discovery layer (`VITE_TMDB_KEY`) for trending rows, posters, trailers (youtube-nocookie iframe with `sandbox`). TMDB-only titles have NO Play button, only Trailer/Add to List.
+- THE EXTRACTION PROXY (Phase 6): You must write a backend proxy endpoint (Node.js/FastAPI) that accepts a TMDB ID, acts as a scraper to extract the raw `.m3u8` from third-party sources, and proxies the video chunks to the React frontend to completely bypass CORS errors and ads.
+
+=== 3. PLAYER (route /watch/:id) ===
+Layout: `100dvh`, black, `object-fit: contain`, custom DOM controls, native controls disabled, `playsInline`, `preload="metadata"`. Fullscreen the player CONTAINER; on iPhone fall back to `video.webkitEnterFullscreen()`.
+
+CRITICAL: NEVER put `currentTime` in React state. Updating it 60 times a second would re-render the whole player tree and cause severe lag. Update the seek bar fill, buffered ranges and time labels through refs and `requestAnimationFrame` direct DOM writes. React state is only for coarse events (playing, paused, buffering, error, panel open).
+
+Controls:
+- Seek bar: thin, grows on hover/drag; buffered ranges, accent progress, draggable thumb. Pointer Events with `setPointerCapture`.
+- Left: Play/Pause, Back 10s, Forward 10s, Volume (icon expands to slider on hover, mute toggle, persisted).
+- Top-left: back arrow + title.
+- Right: Next Episode, Episodes panel, Subtitles & Audio panel, Speed, Quality, PiP, Fullscreen.
+
+Behavior:
+- Controls auto-hide after 3000 ms of inactivity.
+- Touch: single tap toggles controls after 250 ms delay; double-tap on left/right third seeks -10s/+10s with a ripple; center tap plays/pauses.
+- Keyboard: Space/K play-pause, J/Left -10s, L/Right +10s, Up/Down volume, M mute, F fullscreen, C captions, P PiP, N next episode. Brief `aria-live="polite"` toast for each action.
+- Smart Resume: save position every 5s (throttled) and on `pause`, `pagehide`, `visibilitychange`. 
+- Resiliency: buffering spinner only after 400 ms stall. Clean error state with Retry. Automatically downgrade quality on repeated chunk failures.
+
+=== 4. SUBTITLES ===
+- Custom overlay (absolute, above the video), not native `::cue`.
+- `src/utils/subtitles.ts`: pure functions to parse WebVTT and SRT. Sort cues; binary-search lookup.
+- SECURITY: convert allowed tags (`<i>`, `<b>`) into a safe node structure. NEVER use `dangerouslySetInnerHTML` or `innerHTML`. 
+- Drive cue lookup from `requestAnimationFrame` while playing, not `timeupdate`. Re-render overlay only when active cue changes.
+- Settings: font size, color, background, edge. Offset control in 0.25 s steps. 
+- "Add subtitles from device": file input, parsed client-side only.
+
+=== 5. NETFLIX-STYLE SHELL ===
+- Navbar: transparent at top, solid blur after 10 px scroll. Expandable search. Mobile bottom tab bar.
+- Hero: static backdrop, clamped overview, Play (library titles only) and More Info. Muted trailer only after 3s (desktop only).
+- Rows: scroll-snap horizontal lists, hidden scrollbars, arrow buttons on desktop, native swipe on touch, mounted lazily via IntersectionObserver (rootMargin 300px).
+- Cards: `aspect-video` in rows, `aspect-[2/3]` in grids. Hover-expand only under `@media (hover:hover)`: scale 1.08 with 400 ms transition-delay, mini panel. `will-change: transform` only on the hovered card. 
+- Details modal: backdrop, metadata, cast, episodes, "More like this". Focus trap, scroll lock.
+- Search: 350 ms debounce.
+- Skeleton shimmer for hero, rows and grids. Images: explicit aspect ratio, `loading="lazy"`, `decoding="async"`.
+
+=== 6. PERFORMANCE & CLEANUP ===
+- Every `useEffect` that adds listeners, timers, observers, hls instances, Wake Locks or object URLs MUST return a cleanup that releases them. Zero memory leaks.
+- `React.memo` on rows, cards and the player shell with stable keys.
+- Animate only `transform` and `opacity`.
+
+=== 7. SECURITY & DEPLOY ===
+- `vercel.json` with SPA rewrite and security headers (`X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`).
+
+=== 8. COMPATIBILITY & ACCESSIBILITY ===
+- Fluid 320px to 4K. Use `dvh` and safe-area insets. 
+- 44 px minimum tap targets, visible focus rings, ARIA roles, full keyboard operation.
+
+=== 9. DELIVERABLES ===
+1. Config: `src/config.ts`, `tailwind.config.js`, `vite.config.ts`, `vercel.json`, `.env.example`
+2. Data & types: `src/data/library.json`, `src/types.ts`
+3. Utilities, hooks, stores: `src/utils/*`, `src/hooks/*`, `src/store/*`
+4. Player: `src/components/player/*`
+5. UI & pages: `src/components/ui/*`, `src/pages/*` 
+6. Backend Proxy: `api/stream-extractor.ts` (The CORS/Ad bypassing proxy)
+7. `README.md`: setup, env vars, Vercel deploy, manual test checklist.
+
+FINAL STEP (after the last phase)
+Self-audit: list every `useEffect` with its cleanup, confirm `currentTime` is not in React state anywhere, confirm no `innerHTML` for subtitles, confirm no TODOs remain, list every placeholder URL I still need to fill in.

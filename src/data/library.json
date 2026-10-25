@@ -1,0 +1,291 @@
+[
+  {
+    "id": "big-buck-bunny",
+    "type": "episode",
+    "title": "Big Buck Bunny",
+    "year": 2008,
+    "overview": "In a lush forest meadow, a gentle giant rabbit's peaceful morning routine is disrupted by three bullying rodents. Pushed past his limit, Buck devises an elaborate woodland counter-offensive.",
+    "poster": "MUST_FILL_URL_POSTER_BIG_BUCK_BUNNY",
+    "backdrop": "MUST_FILL_URL_BACKDROP_BIG_BUCK_BUNNY",
+    "duration": 596,
+    "maturity": "TV-PG",
+    "genres": ["Animation", "Comedy", "Family", "Open Movie"],
+    "cast": ["Sacha Goedegebure (Director)", "Andreas Goralczyk", "Enrico Valenza", "Nathan Vegdahl", "William Reynish"],
+    "license": "Creative Commons Attribution 3.0 Unported (CC BY 3.0)",
+    "credit": "(c) copyright 2008, Blender Foundation / Peach Open Movie Project",
+    "sources": [
+      {
+        "quality": "1080p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_BIG_BUCK_BUNNY_1080P_MP4"
+      },
+      {
+        "quality": "720p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_BIG_BUCK_BUNNY_720P_MP4"
+      },
+      {
+        "quality": "480p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_BIG_BUCK_BUNNY_480P_MP4"
+      }
+    ],
+    "subtitles": [
+      {
+        "lang": "en",
+        "label": "English (CC)",
+        "url": "/subs/big-buck-bunny-en.vtt"
+      },
+      {
+        "lang": "es",
+        "label": "Español",
+        "url": "/subs/big-buck-bunny-es.vtt"
+      }
+    ],
+    "skipIntro": {
+      "start": 5,
+      "end": 32
+    },
+    "nextEpisodeId": "sintel",
+    "seriesMetadata": {
+      "seriesId": "blender-open-cinema",
+      "season": 1,
+      "episode": 1
+    }
+  },
+  {
+    "id": "sintel",
+    "type": "episode",
+    "title": "Sintel",
+    "year": 2010,
+    "overview": "A lone young warrior named Sintel travels across treacherous mountain ranges and ancient desert cities searching for Scales, a fledgling dragon she rescued and lost to an adult beast.",
+    "poster": "MUST_FILL_URL_POSTER_SINTEL",
+    "backdrop": "MUST_FILL_URL_BACKDROP_SINTEL",
+    "duration": 888,
+    "maturity": "PG-13",
+    "genres": ["Animation", "Fantasy", "Adventure", "Open Movie"],
+    "cast": ["Halina Reijn (Sintel)", "Thom Hoffman (Shaman)", "Colin Levy (Director)", "David Revoy (Concept Art)"],
+    "license": "Creative Commons Attribution 3.0 Unported (CC BY 3.0)",
+    "credit": "(c) copyright Blender Foundation | Durian Open Movie Project",
+    "sources": [
+      {
+        "quality": "1080p",
+        "type": "hls",
+        "url": "MUST_FILL_URL_VIDEO_SINTEL_1080P_HLS"
+      },
+      {
+        "quality": "720p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_SINTEL_720P_MP4"
+      },
+      {
+        "quality": "480p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_SINTEL_480P_MP4"
+      }
+    ],
+    "subtitles": [
+      {
+        "lang": "en",
+        "label": "English",
+        "url": "/subs/sintel-en.vtt"
+      }
+    ],
+    "skipIntro": {
+      "start": 8,
+      "end": 38
+    },
+    "nextEpisodeId": "tears-of-steel",
+    "seriesMetadata": {
+      "seriesId": "blender-open-cinema",
+      "season": 1,
+      "episode": 2
+    }
+  },
+  {
+    "id": "tears-of-steel",
+    "type": "episode",
+    "title": "Tears of Steel",
+    "year": 2012,
+    "overview": "In a cyberpunk future Amsterdam, a desperate team of resistance warriors and scientists stage a critical memory-reconstruction experiment inside the Oude Kerk to avert a catastrophic machine uprising.",
+    "poster": "MUST_FILL_URL_POSTER_TEARS_OF_STEEL",
+    "backdrop": "MUST_FILL_URL_BACKDROP_TEARS_OF_STEEL",
+    "duration": 734,
+    "maturity": "PG-13",
+    "genres": ["Sci-Fi", "Action", "VFX", "Open Movie"],
+    "cast": ["Derek de Lint (Old Thom)", "Sergio Hasselbaink (Barley)", "Denise Rebergen (Celia)", "Vanja Rukavina (Thom)", "Ian Hubert (Director)"],
+    "license": "Creative Commons Attribution 3.0 Unported (CC BY 3.0)",
+    "credit": "(CC) Blender Foundation | Mango Open Movie Project",
+    "sources": [
+      {
+        "quality": "1080p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_TEARS_OF_STEEL_1080P_MP4"
+      },
+      {
+        "quality": "720p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_TEARS_OF_STEEL_720P_MP4"
+      },
+      {
+        "quality": "480p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_TEARS_OF_STEEL_480P_MP4"
+      }
+    ],
+    "subtitles": [
+      {
+        "lang": "en",
+        "label": "English",
+        "url": "/subs/tears-of-steel-en.vtt"
+      }
+    ],
+    "skipIntro": {
+      "start": 10,
+      "end": 42
+    },
+    "nextEpisodeId": "elephants-dream",
+    "seriesMetadata": {
+      "seriesId": "blender-open-cinema",
+      "season": 1,
+      "episode": 3
+    }
+  },
+  {
+    "id": "elephants-dream",
+    "type": "episode",
+    "title": "Elephants Dream",
+    "year": 2006,
+    "overview": "Inside a cavernous, surreal clockwork labyrinth known only as The Machine, the veteran guide Proog attempts to convince his curious apprentice Emo to see the imaginary world he has constructed.",
+    "poster": "MUST_FILL_URL_POSTER_ELEPHANTS_DREAM",
+    "backdrop": "MUST_FILL_URL_BACKDROP_ELEPHANTS_DREAM",
+    "duration": 654,
+    "maturity": "TV-PG",
+    "genres": ["Animation", "Sci-Fi", "Surreal", "Open Movie"],
+    "cast": ["Tygo Gernandt (Proog)", "Cas Jansen (Emo)", "Bassam Kurdali (Director)"],
+    "license": "Creative Commons Attribution 2.5 Generic (CC BY 2.5)",
+    "credit": "(c) copyright 2006, Blender Foundation / Netherlands Media Art Institute / Orange Open Movie Project",
+    "sources": [
+      {
+        "quality": "1080p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_ELEPHANTS_DREAM_1080P_MP4"
+      },
+      {
+        "quality": "720p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_ELEPHANTS_DREAM_720P_MP4"
+      },
+      {
+        "quality": "480p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_ELEPHANTS_DREAM_480P_MP4"
+      }
+    ],
+    "subtitles": [
+      {
+        "lang": "en",
+        "label": "English",
+        "url": "/subs/elephants-dream-en.vtt"
+      }
+    ],
+    "skipIntro": {
+      "start": 6,
+      "end": 28
+    },
+    "nextEpisodeId": null,
+    "seriesMetadata": {
+      "seriesId": "blender-open-cinema",
+      "season": 1,
+      "episode": 4
+    }
+  },
+  {
+    "id": "night-of-the-living-dead",
+    "type": "movie",
+    "title": "Night of the Living Dead",
+    "year": 1968,
+    "overview": "Seven strangers barricade themselves inside an isolated Pennsylvania farmhouse as an inexplicable radiation phenomenon causes the recently deceased to reanimate across the Eastern seaboard.",
+    "poster": "MUST_FILL_URL_POSTER_NIGHT_OF_THE_LIVING_DEAD",
+    "backdrop": "MUST_FILL_URL_BACKDROP_NIGHT_OF_THE_LIVING_DEAD",
+    "duration": 5760,
+    "maturity": "TV-MA",
+    "genres": ["Horror", "Thriller", "Classic Cinema"],
+    "cast": ["Duane Jones (Ben)", "Judith O'Dea (Barbra)", "Karl Hardman (Harry Cooper)", "Marilyn Eastman (Helen Cooper)", "George A. Romero (Director)"],
+    "license": "Public Domain (United States — Released without statutory copyright notice on title frames; Internet Archive Preservation Copy)",
+    "credit": "Image Ten / Laurel Group (1968) — Preserved via Internet Archive",
+    "sources": [
+      {
+        "quality": "1080p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_NIGHT_OF_THE_LIVING_DEAD_1080P_MP4"
+      },
+      {
+        "quality": "720p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_NIGHT_OF_THE_LIVING_DEAD_720P_MP4"
+      },
+      {
+        "quality": "480p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_NIGHT_OF_THE_LIVING_DEAD_480P_MP4"
+      }
+    ],
+    "subtitles": [
+      {
+        "lang": "en",
+        "label": "English",
+        "url": "/subs/night-of-the-living-dead-en.vtt"
+      }
+    ],
+    "skipIntro": {
+      "start": 15,
+      "end": 75
+    },
+    "nextEpisodeId": null
+  },
+  {
+    "id": "his-girl-friday",
+    "type": "movie",
+    "title": "His Girl Friday",
+    "year": 1940,
+    "overview": "Ruthless newspaper editor Walter Burns schemes to stop his ace reporter and ex-wife Hildy Johnson from remarrying an insurance salesman by luring her into covering one final sensational front-page story.",
+    "poster": "MUST_FILL_URL_POSTER_HIS_GIRL_FRIDAY",
+    "backdrop": "MUST_FILL_URL_BACKDROP_HIS_GIRL_FRIDAY",
+    "duration": 5520,
+    "maturity": "TV-G",
+    "genres": ["Comedy", "Romance", "Classic Cinema"],
+    "cast": ["Cary Grant (Walter Burns)", "Rosalind Russell (Hildy Johnson)", "Ralph Bellamy (Bruce Baldwin)", "Howard Hawks (Director)"],
+    "license": "Public Domain (United States — 1968 non-renewal of 1940 copyright registration; Internet Archive Preservation Copy)",
+    "credit": "Columbia Pictures / Howard Hawks (1940) — Preserved via Internet Archive",
+    "sources": [
+      {
+        "quality": "1080p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_HIS_GIRL_FRIDAY_1080P_MP4"
+      },
+      {
+        "quality": "720p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_HIS_GIRL_FRIDAY_720P_MP4"
+      },
+      {
+        "quality": "480p",
+        "type": "mp4",
+        "url": "MUST_FILL_URL_VIDEO_HIS_GIRL_FRIDAY_480P_MP4"
+      }
+    ],
+    "subtitles": [
+      {
+        "lang": "en",
+        "label": "English",
+        "url": "/subs/his-girl-friday-en.vtt"
+      }
+    ],
+    "skipIntro": {
+      "start": 10,
+      "end": 55
+    },
+    "nextEpisodeId": null
+  }
+]
